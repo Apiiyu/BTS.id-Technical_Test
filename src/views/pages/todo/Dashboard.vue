@@ -78,6 +78,7 @@
 <script>
 import Navbar from '@/components/bwa/NavbarLoggedIn'
 import { getDataChecklist, deleteDataChecklist } from '@/services/todo/todo.service'
+import { createAlert } from '@/helpers/alert';
 
 export default {
     name: 'Dashboard',
@@ -125,6 +126,7 @@ export default {
             if(confirm('Are you sure want to delete this data?')){
                 deleteDataChecklist(id)
                     .then(() => {
+                        createAlert('success', 'Success', 'Data has been deleted')
                         this.getData()
                     })
                     .catch((err) => {
